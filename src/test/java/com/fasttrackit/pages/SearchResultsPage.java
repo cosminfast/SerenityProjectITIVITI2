@@ -13,12 +13,16 @@ public class SearchResultsPage extends BasePage {
     @FindBy(css = ".products-grid .item")
     private List<WebElementFacade> listOfProducts;
 
+    @FindBy(css = "button[title='Compare']")
+    private WebElementFacade compareButton;
+
+    @FindBy(css = ".btn-remove")
+    private WebElementFacade removeButton;
 
     By productNameElement = By.cssSelector(".product-name a");
 
     private static WebElement foundElement;
     private static boolean found = false;
-
 
     public boolean isProductInList(String productName) {
         for (WebElementFacade elementFacade : listOfProducts) {
@@ -43,6 +47,27 @@ public class SearchResultsPage extends BasePage {
             }
         }
         return false;
+    }
+
+    public boolean addProdutToCompare(String productName) {
+        for (WebElementFacade elementFacade : listOfProducts) {
+            if (elementFacade.findElement(productNameElement).getText().equalsIgnoreCase(productName)) {
+                elementFacade.findElement(By.cssSelector(".link-compare")).click();
+               return true;
+            }
+        }
+        return false;
+    }
+
+    public void clickOnCompareButton(){
+        clickOn(compareButton);
+    }
+
+    public void removeAllFromCompare(){
+        while (removeButton.isPresent()){
+            removeButton.click();
+            getAlert().accept();
+        }
     }
 
 

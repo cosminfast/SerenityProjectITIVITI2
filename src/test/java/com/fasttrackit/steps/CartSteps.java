@@ -8,7 +8,6 @@ public class CartSteps extends BaseSteps{
 
     @Step
     public void addProductToCart(String productName){
-//        searchResultsPage.addProductToCart(productName);
         Assert.assertTrue("Product " + productName + " not found!",
                 searchResultsPage.addProductToCart(productName));
     }

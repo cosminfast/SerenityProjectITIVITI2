@@ -1,6 +1,7 @@
 package com.fasttrackit.features;
 
 import com.fasttrackit.steps.CartSteps;
+import com.fasttrackit.steps.CompareSteps;
 import com.fasttrackit.steps.LoginSteps;
 import com.fasttrackit.steps.SearchSteps;
 import com.fasttrackit.utils.Constants;
@@ -23,6 +24,8 @@ public class BaseTest {
     protected SearchSteps searchSteps;
     @Steps
     protected CartSteps cartSteps;
+    @Steps
+    protected CompareSteps compareSteps;
 
 
     @Before
